@@ -13,20 +13,20 @@ Pada langkah awal menentukan `target_folder` terlebih dahulu, kemudian *method* 
 
 ### 1. Gambar
 
-Menggunakan *method* `get_image_hash` yang akan mendapatkan *hash*, lebih spesifiknya menggunakan __*pHash*__ atau __*Perceptual Hash computation*__. Ini menggunakan *library* [imagehash](/https://scikit-image.org/) sebagai *hashing* dan [PIL](/https://pillow.readthedocs.io/en/stable/) untuk mendapatkan file gambar dari path.
+Menggunakan *method* `get_image_hash` yang akan mendapatkan *hash*, lebih spesifiknya menggunakan __*pHash*__ atau __*Perceptual Hash computation*__. Ini menggunakan *library* [imagehash](https://scikit-image.org/) sebagai *hashing* dan [PIL](https://pillow.readthedocs.io/en/stable/) untuk mendapatkan file gambar dari path.
 
 Sebelumnya saya menggunakan *hash* __MD5__ yang terdapat pada file `detect.py`. tapi pada praktiknya, tak jarang gambar-gambar yang tak serupa tetap masuk dalam 1 folder group yang seharusnya itu terpisah (tidak cukup akurat), lalu pada dengan bantuan Chat GPT terdapat note, seperti berikut
 
 >Additionally, using the MD5 hash of the image content for comparison, which is fast but not entirely foolproof, as different images might have the same hash. For more robust duplicate image detection, you could consider using perceptual hashing techniques such as dHash or pHash.
 
-Seperti penjelasan diatas, MD5 bisa dikatakan terlalu simple untuk membandingkan kesamaan 2 file, dan direkomendasikan dengan hasil yang __*robust*__ menggunakan __dHash__ atau __pHash__, maka dari itu pada file `detect8.py` ini menggunakan pHash. Reference [pHash](/https://www.hackerfactor.com/blog/index.php?/archives/432-Looks-Like-It.html).
+Seperti penjelasan diatas, MD5 bisa dikatakan terlalu simple untuk membandingkan kesamaan 2 file, dan direkomendasikan dengan hasil yang __*robust*__ menggunakan __dHash__ atau __pHash__, maka dari itu pada file `detect8.py` ini menggunakan pHash. Reference [pHash](https://www.hackerfactor.com/blog/index.php?/archives/432-Looks-Like-It.html).
 
 Lanjut, setelah hash didapatkan, maka akan melakukan pengecekan pada *dictionary* `file_groups`, terdapat *key* dengan hash tersebut atau tidak, jika ada maka akan di *append item* ke *value list* jika tidak akan membuat *key value* baru.
 
 
 ### 2. Video
 
-Kemudian pada ekstensi video, saya menggunakan *libary* [videohash](/https://akamhy.github.io/videohash/) yang menggunakan __pHash__ juga di dalamnya, sebelum menggunakan diperlukan menginstall __FFmpeg__ terlebih dahulu.
+Kemudian pada ekstensi video, saya menggunakan *libary* [videohash](https://akamhy.github.io/videohash/) yang menggunakan __pHash__ juga di dalamnya, sebelum menggunakan diperlukan menginstall __FFmpeg__ terlebih dahulu.
 
 Setelah *hash* didapatkan, langkah yg sama dilakukan, yaitu melakukan pengecekan pada *dictionary* `file_groups`.
 
