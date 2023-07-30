@@ -1,3 +1,16 @@
+## TL;DR
+
+Program for detecting duplicate images & videos using the 'Perceptual Hash computation' method and moving them into their respective group folders. How to use:
+1. Set the target_folder in the `detect8.py` file.
+2. Run the program, happy detecting!
+
+***
+
+<br>
+
+<details>
+<summary>Explanation</summary>
+
 Deteksi Duplikasi Gambar & Video
 ---
 
@@ -15,7 +28,7 @@ Pada langkah awal menentukan `target_folder` terlebih dahulu, kemudian *method* 
 
 Menggunakan *method* `get_image_hash` yang akan mendapatkan *hash*, lebih spesifiknya menggunakan __*pHash*__ atau __*Perceptual Hash computation*__. Ini menggunakan *library* [imagehash](https://scikit-image.org/) sebagai *hashing* dan [PIL](https://pillow.readthedocs.io/en/stable/) untuk mendapatkan file gambar dari path.
 
-Sebelumnya saya menggunakan *hash* __MD5__ yang terdapat pada file `detect.py`. tapi pada praktiknya, tak jarang gambar-gambar yang tak serupa tetap masuk dalam 1 folder group yang seharusnya itu terpisah (tidak cukup akurat), lalu pada dengan bantuan Chat GPT terdapat note, seperti berikut
+Sebelumnya saya menggunakan *hash* __MD5__ yang terdapat pada file `detect.py`. tapi pada praktiknya, tak jarang gambar-gambar yang tak serupa tetap masuk dalam 1 folder group yang seharusnya itu terpisah (tidak cukup akurat), lalu dengan bantuan Chat GPT terdapat note, seperti berikut
 
 >Additionally, using the MD5 hash of the image content for comparison, which is fast but not entirely foolproof, as different images might have the same hash. For more robust duplicate image detection, you could consider using perceptual hashing techniques such as dHash or pHash.
 
@@ -49,4 +62,6 @@ Jika semua sudah berhasil dilakukan, maka pada `target_folder` ini hanya akan te
 
 Pada folder `temp`, terdapat file `index.py` & `rename.py` yang mungkin akan berguna untuk me-*rename* semua file dari `target_folder` yang ditentukan, dan juga file-file lainnya untuk saat ini belum atau tidak digunakan, karena fokus utama terdapat pada file `detect8.py`, `move.py` & `delete.py`.
 
-Note, mungkin untuk kedepannya, jika ada keperluan lain dan memerlukan program untuk mempermudah, repository ini akan di `update` sesuai kebutuhan.
+Note, mungkin untuk kedepannya, jika ada keperluan lain dan memerlukan program untuk mempermudah, repository ini akan di *update* sesuai kebutuhan.
+
+</details>
