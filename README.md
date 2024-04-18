@@ -1,7 +1,7 @@
 ## TL;DR
 
 Program for detecting duplicate images & videos using the 'Perceptual Hash computation' method and moving them into their respective group folders. How to use:
-1. Set the target_folder in the `detect8.py` file.
+1. Download application on tab Releases.
 2. Run the program, happy detecting!
 
 ***
@@ -63,5 +63,12 @@ Jika semua sudah berhasil dilakukan, maka pada `target_folder` ini hanya akan te
 Pada folder `temp`, terdapat file `index.py` & `rename.py` yang mungkin akan berguna untuk me-*rename* semua file dari `target_folder` yang ditentukan, dan juga file-file lainnya untuk saat ini belum atau tidak digunakan, karena fokus utama terdapat pada file `detect8.py`, `move.py` & `delete.py`.
 
 Note, mungkin untuk kedepannya, jika ada keperluan lain dan memerlukan program untuk mempermudah, repository ini akan di *update* sesuai kebutuhan.
+
+***
+
+### Update
+#### 18 April 2024
+- Pada update ini saya menambahkan program dalam bentuk GUI menggunakan library __PySimpleGUI__ pada file `app2.py`, untuk file *exe* dapat dilihat pada [link berikut](https://github.com/vstacked/media_duplicate_detector/releases).
+- sedangkan pada file `app.py` merupakan percobaan pertama saya dalam menggunakan library ini, yang hanya menampilkan gambar dari list gambar yang dipilih.
 
 </details>

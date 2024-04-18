@@ -1,0 +1,11 @@
+__pycache__/
+apps/
+build/
+dist/
+output/
+.env
+app2.spec
+app3.py
+loader.py
+test.py
+your_script.spec

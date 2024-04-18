@@ -45,11 +45,13 @@ def group_files_by_hash(target_folder):
         for file_path in file_paths:
             shutil.move(file_path, group_folder)
 
-if __name__ == "__main__":
-    target_folder = "D:/Media"
+def main(path):
+    target_folder = path
 
     group_files_by_hash(target_folder)
 
     move_single_file_folders(target_folder, target_folder)
 
     delete_empty_folders(target_folder)
+
+    return True
