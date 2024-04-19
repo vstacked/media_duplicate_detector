@@ -1,7 +1,7 @@
 ## TL;DR
 
 Program for detecting duplicate images & videos using the 'Perceptual Hash computation' method and moving them into their respective group folders. How to use:
-1. Download application on tab Releases.
+1. You need to install __ffmpeg__ on your system [first](https://github.com/akamhy/videohash/wiki/Install-FFmpeg,-but-how%3F), then download application on tab Releases.
 2. Run the program, happy detecting!
 
 ***
@@ -68,7 +68,7 @@ Note, mungkin untuk kedepannya, jika ada keperluan lain dan memerlukan program u
 
 ### Update
 #### 18 April 2024
-- Pada update ini saya menambahkan program dalam bentuk GUI menggunakan library __PySimpleGUI__ pada file `app2.py`, untuk file *exe* dapat dilihat pada [link berikut](https://github.com/vstacked/media_duplicate_detector/releases).
+- Pada update ini saya menambahkan program dalam bentuk GUI menggunakan library __PySimpleGUI__ pada file `app2.py`, untuk file *exe* dapat dilihat pada [link berikut](https://github.com/vstacked/media_duplicate_detector/releases), tapi sebelum itu harus install __ffmpeg__ terlebih dahulu pada sistem karena diperlukan untuk library __videohash__ pada [berikut](https://github.com/akamhy/videohash/wiki/Install-FFmpeg,-but-how%3F).
 - sedangkan pada file `app.py` merupakan percobaan pertama saya dalam menggunakan library ini, yang hanya menampilkan gambar dari list gambar yang dipilih.
 
 </details>
