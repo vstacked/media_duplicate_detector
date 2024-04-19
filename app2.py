@@ -65,7 +65,8 @@ while True:
             )
         ]
         window["-FILE LIST-"].update(fnames)
-        window["Process"].update(disabled=False)
+        if fnames:
+            window["Process"].update(disabled=False)
 
     elif event == "Process":
         do_something_with_logging()
