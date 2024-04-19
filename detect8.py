@@ -39,11 +39,16 @@ def group_files_by_hash(target_folder):
 
     # Create folders for each file group and move the files
     for group_id, file_paths in file_groups.items():
-        group_folder = os.path.join(target_folder, f"group_{group_id}")
+        parts = file_paths[0].split("\\")
+        filename = parts[-1]
+        group_folder = os.path.join(target_folder, f"group_{filename}")
         os.makedirs(group_folder, exist_ok=True)
+
+        print(f"Group {group_folder} created")
 
         for file_path in file_paths:
             shutil.move(file_path, group_folder)
+            print(f"Moved {file_path} to {group_folder}")
 
 def main(path):
     target_folder = path
@@ -53,5 +58,7 @@ def main(path):
     move_single_file_folders(target_folder, target_folder)
 
     delete_empty_folders(target_folder)
+
+    print("Done")
 
     return True
