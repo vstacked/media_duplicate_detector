@@ -44,7 +44,7 @@ def group_files_by_hash(target_folder):
         group_folder = os.path.join(target_folder, f"group_{filename}")
         os.makedirs(group_folder, exist_ok=True)
 
-        print(f"Group {group_folder} created")
+        print(f"Created Group {group_folder}")
 
         for file_path in file_paths:
             shutil.move(file_path, group_folder)
@@ -59,6 +59,6 @@ def main(path):
 
     delete_empty_folders(target_folder)
 
-    print("Done")
+    print("Completed.")
 
     return True
