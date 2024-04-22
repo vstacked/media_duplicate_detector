@@ -1,9 +1,19 @@
 ## TL;DR
 
-Program for detecting duplicate images & videos using the 'Perceptual Hash computation' method and moving them into their respective group folders. How to use:
-1. You need to install __ffmpeg__ on your system [first](https://github.com/akamhy/videohash/wiki/Install-FFmpeg,-but-how%3F), then download application on tab Releases.
-2. Run the program, happy detecting!
 
+This program detects duplicate files using two methods:
+- ***Perceptual Hash computation***: This method is used for images and videos.
+- ***SHA-256 hash***: This method is used for other file types (documents, PDFs, presentations, and text files).
+
+The program then moves duplicate files into their respective group folders.
+
+**How to Use:**
+1. **For Video Detection**:
+    - Install [ffmpeg](https://github.com/akamhy/videohash/wiki/Install-FFmpeg,-but-how%3F) on your system first.
+    - Download the application from the "Releases" tab.
+2. **For Other File Types:**
+    - You don't need ffmpeg. Just download the application.
+3. Run the program and start detecting duplicates!
 ***
 
 <br>
@@ -70,5 +80,7 @@ Note, mungkin untuk kedepannya, jika ada keperluan lain dan memerlukan program u
 #### 18 April 2024
 - Pada update ini saya menambahkan program dalam bentuk GUI menggunakan library __PySimpleGUI__ pada file `app2.py`, untuk file *exe* dapat dilihat pada [link berikut](https://github.com/vstacked/media_duplicate_detector/releases), tapi sebelum itu harus install __ffmpeg__ terlebih dahulu pada sistem karena diperlukan untuk library __videohash__ pada [berikut](https://github.com/akamhy/videohash/wiki/Install-FFmpeg,-but-how%3F).
 - sedangkan pada file `app.py` merupakan percobaan pertama saya dalam menggunakan library ini, yang hanya menampilkan gambar dari list gambar yang dipilih.
-
+#### 22 April 2024
+- Menambahkan tipe file lain untuk di deteksi, seperti file dengan extensi `.docx`, `.pdf`, `.pptx` & `.txt` dengan menggunakan metode `hash.sha256()`
+- Menambahkan tema default _GreenTan_
 </details>

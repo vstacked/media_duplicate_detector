@@ -2,15 +2,31 @@ import PySimpleGUI as sg
 import os.path
 import detect8
 
-def do_something_with_logging():
-    # sg.popup_animated(sg.DEFAULT_BASE64_LOADING_GIF, background_color='white', time_between_frames=100)
-    sg.popup_animated(None)
-    window["Process"].update(disabled=True)
-    result = detect8.main(values["-FOLDER-"])
-    if(result == True):
+def update_file_list():
+    folder = values["-FOLDER-"]
+    try:
+        # Get list of files in the folder
+        file_list = os.listdir(folder)
+    except:
+        file_list = []
+
+    fnames = [
+        f
+        for f in file_list
+        if os.path.isfile(os.path.join(folder, f))
+        and f.lower().endswith(
+            (".jpg", ".jpeg", ".png", ".gif", ".JPG", ".mp4", ".mkv", ".MP4", ".docx", ".pdf", ".pptx", ".txt")
+        )
+    ]
+    window["-FILE LIST-"].update(fnames)
+    if fnames:
         window["Process"].update(disabled=False)
+    else:
+        window["Process"].update(disabled=True)
 
 # First the window layout in 2 columns
+
+sg.theme('GreenTan')
 
 file_list_column = [
     [
@@ -41,7 +57,6 @@ layout = [
 
 window = sg.Window("Media Detector", layout)
 
-
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED:
@@ -49,27 +64,14 @@ while True:
 
     # Folder name was filled in, make a list of files in the folder
     if event == "-FOLDER-":
-        folder = values["-FOLDER-"]
-        try:
-            # Get list of files in the folder
-            file_list = os.listdir(folder)
-        except:
-            file_list = []
-
-        fnames = [
-            f
-            for f in file_list
-            if os.path.isfile(os.path.join(folder, f))
-            and f.lower().endswith(
-                (".jpg", ".jpeg", ".png", ".gif", ".JPG", ".mp4", ".mkv", ".MP4")
-            )
-        ]
-        window["-FILE LIST-"].update(fnames)
-        if fnames:
-            window["Process"].update(disabled=False)
+        update_file_list()
 
     elif event == "Process":
-        do_something_with_logging()
+        window["Process"].update(disabled=True)
+        result = detect8.main(values["-FOLDER-"])
+        if(result == True):
+            window["Process"].update(disabled=False)
+            update_file_list()
 
     elif event == "-FILE LIST-":  # A file was chosen from the listbox
         try:

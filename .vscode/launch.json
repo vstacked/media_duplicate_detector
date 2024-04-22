@@ -1,0 +1,14 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run app2",
+            "command": "python -u \"d:\\o\\media_duplicate_detector\\app2.py\"",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+    ]
+}
