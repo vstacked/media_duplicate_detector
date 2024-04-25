@@ -31,14 +31,18 @@ def get_image_hash(image_path):
     img = Image.open(image_path)
     return imagehash.phash(img)
 
-def group_files_by_hash(target_folder):
+def group_files_by_hash(target_folder, selected_extensions):
     # Create a dictionary to store file hashes and corresponding file paths
     file_groups = {}
 
+    image_extensions = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".tiff", ".psd", ".bmp"}
+    video_extensions = {".mp4", ".mkv", ".mov", ".avi", ".wmv", ".flv"}
+
     # Loop through all files in the target folder
     for filename in os.listdir(target_folder):
-        if os.path.isfile(os.path.join(target_folder, filename)):
-            if filename.endswith(('.jpg', '.jpeg', '.png', '.gif', '.JPG')):
+        if os.path.isfile(os.path.join(target_folder, filename)) and filename.lower().endswith(selected_extensions):
+            filename_lower = filename.lower()
+            if filename_lower.endswith(tuple(image_extensions)):
                 file_path = os.path.join(target_folder, filename)
                 image_hash = get_image_hash(file_path)
                 data = str(image_hash)
@@ -48,7 +52,7 @@ def group_files_by_hash(target_folder):
                     file_groups[data].append(file_path)
                 else:
                     file_groups[data] = [file_path]
-            elif filename.endswith(('.mp4', '.mkv', '.MP4')):
+            elif filename_lower.endswith(tuple(video_extensions)):
                 video_path = os.path.join(target_folder, filename)
                 video_hash = VideoHash(path=video_path)
                 data = str(video_hash)
@@ -58,7 +62,7 @@ def group_files_by_hash(target_folder):
                     file_groups[data].append(video_path)
                 else:
                     file_groups[data] = [video_path]
-            elif filename.endswith(('.docx', '.pdf', '.pptx', '.txt')):
+            else:
                 file_path = os.path.join(target_folder, filename)
                 file_hash = hash_file(file_path)
                 data = str(file_hash)
@@ -85,13 +89,13 @@ def group_files_by_hash(target_folder):
             shutil.move(file_path, group_folder)
             print(f"Moved \"{file_name}\" to \"{group_name}\"")
 
-def main(path):
+def main(path, selected_extensions):
     target_folder = path
 
     try:
-        group_files_by_hash(target_folder)
+        group_files_by_hash(target_folder, selected_extensions)
     
-        move_single_file_folders(target_folder, target_folder)
+        move_single_file_folders(target_folder)
 
         delete_empty_folders(target_folder)
     except OSError as e:
