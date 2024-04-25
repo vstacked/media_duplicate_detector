@@ -83,4 +83,7 @@ Note, mungkin untuk kedepannya, jika ada keperluan lain dan memerlukan program u
 #### 22 April 2024
 - Menambahkan tipe file lain untuk di deteksi, seperti file dengan extensi `.docx`, `.pdf`, `.pptx` & `.txt` dengan menggunakan metode `hash.sha256()`
 - Menambahkan tema default _GreenTan_
+#### 25 April 2024
+- Menambahkan pengaturan ekstensi, menambah dan menghapus ekstensi-ekstensi yang akan di *detect* agar lebih *customable*.
+- Mengatur icon aplikasi dengan bantuan [AI](https://pixlr.com/image-generator).
 </details>
